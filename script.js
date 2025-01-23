@@ -4,16 +4,24 @@ let tasks=[];
 
 // AddTask function
 function addTask(){
-const input = document.getElementById('taskInput');
-const task = input.ariaValueMax.trim();
-console.log(task);
-if(task !=='')
-{
-    task.push(task);
+    const input = document.getElementById('taskInput');
+    const task = input.ariaValueMax.trim();
     console.log(task);
-    input.value=''; 
-    displayTasks();
+    if(task !=='')
+    {
+        task.push(task);
+        console.log(tasks);
+        input.value=''; 
+        displayTasks();
+    }
 }
+
+// Edit Task - Edit Button
+function editTask(index){
+    const newTask=prompt('Edit Task', tasks[index]);
+    console.log(newTask);
+    tasks[index]=newTask.trim();
+    displayTasks();
 }
 
 // Remove Task -- delete button
@@ -34,6 +42,7 @@ function displayTasks(){
                 
                 <div class="button-group">
                 
+                <button class="edit-btn" onclick="editTask(${i})">Edit</button>
                 <button class="delete-btn" onclick="removeTask(${i})">Delete</button>
 
                 </div>
